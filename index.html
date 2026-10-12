@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BS3G SUPERSTORE</title>
+<style>
+body{background:#000;color:gold;text-align:center;font-family:Arial;padding:20px}
+button{padding:18px;border:none;border-radius:12px;font-weight:bold;margin:12px;font-size:17px;cursor:pointer;width:90%;max-width:320px}
+#status{background:#111;color:#00FF88;padding:12px;border-radius:8px;border:1px solid #333;margin:15px;word-break:break-all}
+</style>
+</head>
+<body>
+<h1>BS3G SUPERSTORE 👑</h1>
+<p id="status">Status: Tap BLUE first</p>
+
+<button onclick="connectWallet()" style="background:#3375BB;color:white;border:3px solid white">💙 CONNECT TRUST WALLET</button>
+<br>
+<button onclick="payBS3G()" style="background:gold;color:black">💛 PAY 10K BS3G REAL</button>
+<br><br>
+<a href="https://wa.me/27602502029" style="background:#25D366;color:white;padding:14px 20px;border-radius:10px;text-decoration:none;font-weight:bold;display:inline-block">💬 WhatsApp +27 60 250 2029</a>
+
+<p style="margin-top:25px;color:#666;font-size:11px">OSSA 94 | 0x3e65FA6e7D7E14193702AB9591299dcfcC7a0E55</p>
+
+<script>
+let userAccount = null;
+
+async function connectWallet(){
+ const s = document.getElementById('status');
+ try{
+  if(!window.ethereum){
+   s.innerText = "Open this in Trust Wallet browser!";
+   return;
+  }
+  const accounts = await window.ethereum.request({method:'eth_requestAccounts'});
+  userAccount = accounts[0];
+  s.innerText = "Connected: " + userAccount.slice(0,6) + "..." + userAccount.slice(-4) + " ✅ READY TO PAY";
+ }catch(err){
+  document.getElementById('status').innerText = "Connect failed: " + err.message;
+ }
+}
+
+async function payBS3G(){
+ const s = document.getElementById('status');
+ if(!userAccount){
+  s.innerText = "Tap BLUE to connect first!";
+  return;
+ }
+ try{
+  s.innerText = "Paying... confirm in Trust Wallet...";
+  const recipient = "0x3e65FA6e7D7E14193702AB9591299dcfcC7a0E55";
+  // 0.001 BNB test payment - change 
