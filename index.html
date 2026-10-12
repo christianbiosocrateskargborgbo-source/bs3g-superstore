@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BS3G FIXED BUTTON</title>
+</head>
+<body style="background:#000;color:gold;text-align:center;padding:12px;font-family:Arial">
+<h1 style="color:gold;font-size:28px">BS3G SUPERSTORE 👑<br>FIXED BUTTON TEST</h1>
+
+<button onclick="testJS()" style="background:white;color:black;padding:10px 20px;border-radius:8px;font-weight:bold;margin:8px">1️⃣ TEST IF JS WORKS - TAP ME FIRST</button>
+<br>
+<button onclick="connectTW()" id="blue" style="background:#3375BB;color:white;padding:18px 30px;border-radius:14px;font-weight:bold;font-size:17px;border:3px solid white;margin:12px">💙 CONNECT TRUST WALLET</button>
+
+<p id="status" style="color:cyan;background:#111;padding:10px;border-radius:8px;font-size:13px">Status: Tap TEST button first!</p>
+
+<button onclick="resetAll()" style="background:#333;color:white;padding:5px 10px;border-radius:6px;font-size:10px">🔄 RESET</button>
+
+<br><br>
+<button onclick="payTW('10000')" style="background:gold;color:black;padding:18px;width:92%;border-radius:14px;font-weight:bold;font-size:16px;box-shadow:0 0 15px gold">💛 PAY 10K BS3G REAL</button>
+
+<p id="log" style="font-size:11px;color:#0f0;background:#111;padding:10px;border-radius:8px;text-align:left;word-break:break-all">LOG:<br>> Page loaded<br>> Tap TEST button...</p>
+
+<script>
+const TOKEN="0x6db3bfc6bc3e92867ce02ba8feee9d6fb06ea";
+const OWNER="0x3e65FA6e7D7E14193702AB9591299dcfcC7a0E55";
+let user="";
+
+function log(m){let e=document.getElementById("log");e.innerHTML+="<br>> "+m;console.log(m);}
+function setStatus(t){document.getElementById("status").innerHTML=t;log(t);}
+
+function testJS(){
+  alert("✅ JS WORKS! Button works! Now tap BLUE CONNECT!");
+  log("TEST JS WORKS - Click OK");
+  setStatus("✅ JS Works! Now tap BLUE CONNECT TRUST WALLET");
+}
+
+function resetAll(){user="";setStatus("🔄 Reset - Tap BLUE");document.getElementById("blue").innerHTML="💙 CONNECT TRUST WALLE
