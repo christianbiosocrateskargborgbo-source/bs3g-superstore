@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BS3G SUPERSTORE</title>
+<style>body{background:#000;color:gold;text-align:center;font-family:Arial;padding:20px}button{border:none;border-radius:12px;font-weight:bold;padding:18px 28px;margin:12px;font-size:16px;cursor:pointer}#status{color:cyan;background:#111;padding:12px;border-radius:8px;border:1px solid #333;margin:15px}</style>
+</head><body>
+<h1>BS3G SUPERSTORE 👑</h1>
+<p id="status">Status: Tap BLUE to connect wallet</p>
+<button id="blueBtn" onclick="connectWallet()" style="background:#3375BB;color:white;border:3px solid white">💙 CONNECT TRUST WALLET - TAP ME</button><br>
+<button onclick="payBS3G()" style="background:gold;color:black">💛 PAY 10K BS3G REAL</button><br><br>
+<a href="https://wa.me/27602502029" style="background:#25D366;color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:bold">💬 WhatsApp: +27 60 250 2029</a>
+<p style="margin-top:30px;font-size:12px;color:#888">OSSA 94 | FOUNDER ON TOP<br>0x3e65FA6e7D7E14193702AB9591299dcfcC7a0E55</p>
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script>
+let provider, signer, userAddr;
+async function connectWallet(){
+ const s=document.getElementById('status');
+ try{
+  if(!window.ethereum){s.innerText="No wallet! Open in Trust Wallet browser";return;}
+  provider=new ethers.providers.Web3Provider(window.ethereum);
+  await provider.send("eth_requestAccounts",[]);
+  signer=provider.getSigner();
+  userAddr=await signer.getAddress();
+  s.innerText="Connected: "+userAddr.slice(0,6)+"..."+userAddr.slice(-4)+" ✅ Ready to PAY";
+  s.style.color="#00FF88";
+ }catch(e){s.innerText="Failed: "+e.message;s.style.color="red";}
+}
+async function payBS3G(){
+ const s=document.getElementById('status');
+ if(!signer){s.innerText="Tap BLUE first to connect!";return;}
+ try{
+  const recipient="0x3e65FA6e7D7E14193702AB9591299dcfcC7a0E55";
+  cons
