@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BS3G SUPERSTORE - FIXED</title>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
+</head>
+<body style="background:#000;color:gold;text-align:center;padding:15px;font-family:Arial">
+<h1 style="font-size:28px">BS3G SUPERSTORE 👑<br>FIXED PAY</h1>
+<p style="font-size:11px">Owner 0x3e65...0E55 • BS3G 0x6db3...6EA</p>
+
+<button id="cb" onclick="connect()" style="background:purple;color:white;padding:12px 22px;border-radius:10px;font-weight:bold;margin:10px">🦊 CONNECT WALLET</button>
+<p id="status" style="color:cyan;font-size:12px;margin:8px">Tap connect - Works every time now!</p>
+<button onclick="reset()" style="background:#333;color:white;padding:6px 12px;border-radius:6px;font-size:10px">🔄 RESET CONNECTION</button>
+<br><br>
+<button onclick="pay(10000)" style="background:gold;color:black;padding:14px;width:85%;border-radius:12px;font-weight:bold;font-size:14px">💛 PAY 10K BS3G REAL - FIXED</button>
+<p id="log" style="font-size:10px;color:#888;margin-top:10px;word-break:break-all"></p>
+
+<div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:500px;margin:20px auto">
+<button onclick="pay(50000)" style="background:orange;color:black;padding:8px;border-radius:8px;font-weight:bold;font-size:11px">FASHION 50K</button>
+<button onclick="pay(100000)" style="background:cyan;color:black;padding:8px;border-radius:8px;font-weight:bold;font-size:11px">ART 100K</button>
+<button onclick="pay(250000)" style="background:lime;color:black;padding:8px;border-radius:8px;font-weight:bold;font-size:11px">JEWELRY 250K</button>
+<button onclick="pay(500000)" style="background:gold;color:black;padding:8px;border-radius:8px;font-weight:bold;font-size:11px">THRONE 500K</button>
+</div>
+
+<script>
+const CONTRACT = "0x6db3bfc6bc3e92867ce02ba8feee9d6fb06ea";
+const OWNER = "0x3e65FA6e7D7E14193702AB9591299dc
