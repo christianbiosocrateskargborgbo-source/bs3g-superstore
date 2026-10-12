@@ -1,7 +1,0 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BS3G REAL</title><script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script></head><body style="background:#000;color:#FFD700;text-align:center;padding:20px;font-family:Arial">
-<h1>BS3G SUPERSTORE REAL PAY</h1>
-<button onclick="connect()" style="background:purple;color:white;padding:15px;border-radius:10px">🦊 CONNECT WALLET</button><p id="s">Not connected</p>
-<button onclick="pay()" style="background:gold;color:black;padding:15px;width:80%;border-radius:10px;margin-top:20px;font-weight:bold">💛 PAY 10K BS3G REAL</button>
-<script>
-const C="0x6db3bfc6bc3e92867ce02ba8feee9d6fb06ea";const O="0x3e65FA6e7D7E14193702AB9591299dcfcC7a0E55";let p,s;async function connect(){p=new ethers.BrowserProvider(window.ethereum);await p.send("eth_requestAccounts",[]);s=await p.getSigner();let a=await s.getAddress();document.getElementById("s").innerHTML="Connected "+a.slice(0,6);await window.ethereum.request({method:"wallet_switchEthereumChain",params:[{chainId:"0x89"}]})}async function pay(){let c=new ethers.Contract(C,["function transfer(address,uint) returns (bool)"],s);let tx=await c.transfer(O,ethers.parseUnits("10000",18));document.getElementById("s").innerHTML="Tx "+tx.hash;await tx.wait();alert("PAID 10K BS3G to "+O)}
-</script></body></html>
