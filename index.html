@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BS3G POLYGON STORE</title>
+<style>
+body{background:#000;color:#fff;text-align:center;font-family:Arial;padding:15px}
+h1{color:gold}
+#status{background:#111;border:2px solid #8247E5;color:#0f0;padding:12px;border-radius:10px;margin:15px;word-break:break-all;font-weight:bold}
+button{width:90%;max-width:320px;padding:18px;margin:10px;border:none;border-radius:12px;font-weight:900;font-size:17px}
+.purple{background:#8247E5;color:white}
+.gold{background:gold;color:black}
+.green{background:#25D366;color:white}
+</style>
+</head>
+<body>
+<h1>BS3G SUPERSTORE 👑</h1>
+<p style="color:#8247E5;font-weight:bold">POLYGON NETWORK - POL</p>
+
+<div id="status">✅ Ready - Tap PURPLE to connect</div>
+
+<button class="purple" onclick="connectWallet()">💜 CONNECT WALLET (POLYGON)</button><br>
+<button class="gold" onclick="payNow()">💛 PAY 0.01 POL (TEST)</button><br>
+<a href="https://wa.me/27602502029" style="text-decoration:none"><button class="green">💬 WhatsApp</button></a>
+
+<p style="color:#555;font-size:10px;margin-top:20px">OSSA 94 | 0x3e65FA6e7D7E14193702AB9591299dcfcC7a0E55 | Polygon 137</p>
+
+<script>
+let account = null;
+
+async function connectWallet(){
+  let s = document.getElementById('status');
+  try{
+    s.innerText = "⏳ Connecting...";
+    if(typeof window.ethereum === 'undefined'){
+      s.innerText = "❌ No wallet found. Make sure you are in Trust Wallet Browser > Browser tab. Not Chrome.";
+      return;
+    }
+    const accounts = await window.ethereum.request({method:'eth_requestAccounts'});
+    account = accounts[0];
+
+    // Try switch to Polygon 137
+    try{
+      await window.ethereum.request({method:'wallet_switchEthereumChain',params:[{chainId:'0x89'}]});
+    }catch(err){
+      // Add Polygon if not exists
+      if(err.code === 4902){
+        await window.ethereum.request({method:'wallet_addEthereumChain',params:[{chainId:'0x89',chainName:'Polygon
