@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BS3G POLYGON TEST</title>
+<style>body{background:#000;color:#fff;text-align:center;font-family:Arial;padding:20px}
+#s{background:#111;border:3px solid gold;padding:15px;border-radius:10px;margin:15px;color:#0f0;font-weight:bold}
+button{width:95%;padding:22px;margin:10px;border-radius:15px;font-weight:900;font-size:18px;border:3px solid #fff}
+.p{background:#8247E5;color:#fff}.y{background:gold;color:#000}</style>
+</head><body>
+<h1 style="color:gold">BS3G POLYGON TEST V9 👑</h1>
+<div id="s">1. Tap CONNECT<br>2. Switch to POLYGON when asked<br>3. Tap TEST PAY 0.01 POL</div>
+<button class="p" onclick="connect()">💜 CONNECT + SWITCH TO POLYGON</button><br>
+<button class="y" onclick="testpay()">💛 TEST PAY 0.01 POL (0.01c fee)</button>
+<p style="color:#555;font-size:10px">Your address: 0x3e65FA6e7D7E14193702AB9591299dcfcC7a0E55 | Polygon 137</p>
+<script>
+let acct=null;
+async function connect(){
+  const s=document.getElementById('s');
+  const p=window.ethereum;
+  if(!p){s.innerText="❌ Open in Trust Wallet Browser!";return;}
+  try{
+    const a=await p.request({method:'eth_requestAccounts'}); acct=a[0];
+    s.innerText="✅ Connected "+acct.slice(0,6)+"... Now switching to Polygon...";
+    try{ await p.request({method:'wallet_switchEthereumChain',params:[{chainId:'0x89'}]}); }
+    catch(e){
+      if(e.code===4902){
+        await p.request({method:'wallet_addEthereumChain',params:[{chainId:'0x89',chainName:'Polygon Mainnet',nativeCurrency:{name:'POL',symbol:'POL',decimals:18},rpcUrls:['https://polygon-rpc.com/'],blockExplorerUrls:['https://polygonscan.com/']}]});
+      } else { throw e; }
+    }
+    s.innerText="✅ READY ON POLYGON! Account: "+acct.slice(0,6)+"... | Balance: 5.89 POL | Now tap TEST PAY";
+  }catch(e){s.innerText="❌ "+e.message; alert(e.message);}
+}
+async function testpay(){
+  const s=document.getElementById('s');
+  if(!acct){s.innerText="⚠️ T
